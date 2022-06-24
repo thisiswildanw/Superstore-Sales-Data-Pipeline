@@ -63,9 +63,11 @@ Table of Content
   Here is orders, categories and customers staging that we have created by executing **drive_gcs_intgr.py** : 
   <p align="center">
   <img src="Images/categories_staging.png" style="border: 1px solid black" alt="Categories Staging" >
-  <br>
+  </p>
+  <p align="center">
   <img src="Images/customers_staging.png" style="border: 1px solid black" alt="Customers Staging" >
-  <br>
+  </p>
+  <p align="center">
   <img src="Images/orders_staging.png" style="border: 1px solid black" alt="Orders Staging" >
   </p>
 
