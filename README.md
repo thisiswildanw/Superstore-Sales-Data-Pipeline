@@ -24,7 +24,7 @@ Table of Content
 
 ## Dataset
 
-<p>The data used in this project is public dataset from superstore that shared by Binar Academy via Google Drive shared folder. There are 3 flat files (.xlsx) that will be used: </p>
+<p>The data used in this project is public dataset from superstore that shared by Binar Academy via Google Drive shared folder. There are 3 flat files (.xlsx) in 'GOLD' shared folder that will be used: </p>
 
 1. Dataset Superstore Categories - BI Engineer.xlsx
 2. Dataset Superstore Customers - BI Engineer.xlsx
@@ -36,8 +36,16 @@ Table of Content
 </p>
 <br>
 
-## Tools and Technology
+## Tools and Technology  
+- Cloud: Google Cloud Platform (GCP)
+  - Data Warehouse : Google BigQuery
+  - Data Backup : Google Storage
+- Key Access : Client Credentials (Google Drive API), Service Account (GCP)
+- Data Visualization : Google Data Studio 
+- Programming Language : Pyhton, SQL
+
 ## Project Architecture
+
   ### Data Extraction
   ### Data Transform and Load
   ### Data Visualization
