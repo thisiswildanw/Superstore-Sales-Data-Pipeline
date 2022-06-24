@@ -56,14 +56,26 @@ Table of Content
   - **get_folder()** is used to get the folder link and download it from Google Drive via pydrive with gdown library. Authentication process using gdrive_auth() and specific folder names may be required to execute this function. Here is the repository of gdown : [link](https://github.com/wkentaro/gdown)
   - **clean_name()** is used to get clean name of flat files. So we can create pandas dataframe and data staging based on each flat files name.
   - **excel_files_to_pandas()** is used to convert each flat files or excel files to dataframe using pandas and put it together into python dictionary.  
-  - **main()** is used to execute authentication, download and flat files extraction process into python dictionary. Then, load each dataframe in dictionary to data staging in BigQuery with table name = cleaned flat file name.   
+  - **main()** is used to execute authentication, download and flat files extraction process into python dictionary. Then, load each dataframe in dictionary to data staging in BigQuery with table name = cleaned flat file name. In loading data process from dataframe to BigQuery, we implement slowly changing dimension type 1 or replace old tables with new tables.  
 
-  Here is data staging in Google BigQuery that we created by executing drive_gcs_intgr.py using python : 
 
-  
 
-  Here is the physical design : 
-  
+  Here is orders, categories and customers staging that we have created by executing **drive_gcs_intgr.py** : 
+  <p align="center">
+  <img src="Images/categories_staging.png" style="border: 1px solid black" alt="Categories Staging" >
+  <br>
+  <img src="Images/customers_staging.png" style="border: 1px solid black" alt="Customers Staging" >
+  <br>
+  <img src="Images/orders_staging.png" style="border: 1px solid black" alt="Orders Staging" >
+  </p>
+
+  Here is the **data staging physical design** : 
+  <p align="center">
+
+  <img src="Images/data_staging_design.png" style="border: 1px solid black" alt="Data Staging Design" >
+  </p>
+
+
 
   ### Data Transform and Load
   ### Data Visualization
