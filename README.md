@@ -18,8 +18,7 @@ Table of Content
 
 
 ## Project Overview
-This project contains the process of retrieving, cleaning, and standardizing data from flat files and designing a data warehouse in Google BigQuery so     we can use it to build sales visualization dashboards (monthly, quarterly and yearly). There are 3 main process of this project. First, we use python to automate flat files extraction process from Google Drive and load it to data staging in Google BigQuery. Secondly, we are using SQL Query to build data warehouse in Google BigQuery, back up data warehouse to Google Storage and schedule it monthly using BigQuery Scheduler. At the end, we will use Google Data Studio to build the sales visualization dashboard.
-
+This project contains the process of retrieving, cleaning, and standardizing data from flat files and designing a data warehouse in Google BigQuery so     we can use it to build superstore sales visualization dashboards (monthly, quarterly and yearly). There are 3 main process of this project. First, we use python to automate flat files extraction process from Google Drive and load it to data staging in Google BigQuery. Secondly, we are build data warehouse from data staging in Google BigQuery, back up data warehouse to Google Storage and schedule it monthly using BigQuery Scheduler. At the end, we will use Google Data Studio to build superstore sales visualization dashboard.
 
 ## Dataset
   ### Data Source
