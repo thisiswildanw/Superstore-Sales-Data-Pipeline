@@ -77,13 +77,12 @@ Table of Content
   ### Data Transform and Load
 
   **1. Create Empty Fact and Dimension Table Based on Data Warehouse Modeling**
-  
-   Main Step: 
-    - Design a star schema data model for data warehouse using [sqldbm](https://app.sqldbm.com).
+    Main Step: 
+    - Design a star schema data model for data warehouse using [sqldbm](https://app.sqldbm.com) 
     - Create sales_warehouse dataset in BigQuery.
     - Create empty fact and dimension table with each schemas based designed data model. 
     
-    The Result:  
+   The Result:  
 
   <p align="center">
       <img src="Images/data_warehouse_design.png" style="border: 1px solid black" alt="Data Staging Design" >
@@ -92,9 +91,9 @@ Table of Content
 
 **2. Data Staging to Data Warehouse Query (Inflow)**
   This query contain several process:  
-  - Insert and Update Sales Fact
-  - Implement 
-  3. Data Warehouse to Aggregation Table Query (Upflow)
+  - 
+  - 
+**3. Data Warehouse to Aggregation Table Query (Upflow)**
 
   ### Data Visualization
 
