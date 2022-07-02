@@ -1,4 +1,4 @@
-Superstore Sales Data Pipeline
+Superstore Sales Data Pipeline (On Progress)
 ==============================
 This is a final project after participated Business Intelligence Engineer Bootcamp among 2-3 months at [Binar Academy](https://www.binaracademy.com/). Its fun to learn new knowledge (Technical Documentation, ETL Process & Data Warehousing) and technologies (Google Cloud Platform, BigQuery & Data Studio) related to BI Engineering job. Appreciated the organizer and instuctors, they really design a good syllabus and guide students well. 
 
@@ -77,8 +77,9 @@ Table of Content
   ### Data Transform and Load
 
   **1. Create Empty Fact and Dimension Table Based on Data Warehouse Modeling**
-    Main Step: 
-      - Design a star schema data model for data warehouse using SQLDBM(https://app.sqldbm.com).
+    
+  Main Step: 
+      - Design a star schema data model for data warehouse using [sqldbm](https://app.sqldbm.com).
       - Create sales_warehouse dataset in BigQuery.
       - Create empty fact and dimension table with each schemas based designed data model. 
     
@@ -89,9 +90,11 @@ Table of Content
   </p> 
     
 
-  2. Data Staging to Data Warehouse Query (Inflow)
+**2. Data Staging to Data Warehouse Query (Inflow)**
+  This query contain several process:  
+  - Insert and Update Sales Fact
+  - Implement 
   3. Data Warehouse to Aggregation Table Query (Upflow)
-  4. Backup Data Warehouse to Google Storage (Downflow)
 
   ### Data Visualization
 
