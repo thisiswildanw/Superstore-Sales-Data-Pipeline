@@ -13,14 +13,14 @@ Table of Content
     - [Data Extraction](#data-extraction)
     - [Data Transform and Load](#data-transform-and-load)
     - [Data Visualization](#data-visualization)
-  - [Further Improvements](#further-improvements)
+  - [Further Improvements](#further-improvements)V
   - [Special Thanks](#special-thanks)
 
 
 ## Project Overview
 <p>This project contains the process of retrieving, cleaning, and standardizing data from flat files and designing a data warehouse in Google BigQuery so we can use it to build superstore sales visualization dashboards (monthly, quarterly and yearly).</p> 
 
-<p>There are 3 main process of this project. First, we use python to automate flat files extraction process from Google Drive and load it to data staging Google BigQuery. Secondly, we are transform the data staging and implement SCD (Slowly Changing Dimension) Type 2 to build data warehouse in Google BigQuery, back up data warehouse to Google Storage using SQL Query and schedule it monthly using BigQuery Scheduler. At the end, we will use Google Data Studio to build superstore sales visualization dashboard.</p>
+<p>There are 3 main process of this project. First, we use python to automate flat files extraction process from Google Drive and load it to data staging Google BigQuery. Secondly, we are transform the data staging and build data warehouse in Google BigQuery, schedule it monthly using BigQuery Scheduler. At the end, we will use Google Data Studio to build superstore sales visualization dashboard.</p>
 
 ## Dataset
 
@@ -45,6 +45,9 @@ Table of Content
 - **Programming Language** : Pyhton, SQL
 
 ## Project Architecture
+<p align="center">
+  <img src="Images/data_architecture.png" style="border: 1px solid black;width:600px;height:800px" alt="Data Source" >
+</p>
 
   ### Data Extraction
   
@@ -56,7 +59,7 @@ Table of Content
   - **get_folder()** is used to get the folder link and download it from Google Drive via pydrive with gdown library. Authentication process using gdrive_auth() and specific folder names may be required to execute this function. Here is the repository of gdown : [link](https://github.com/wkentaro/gdown)
   - **clean_name()** is used to get clean name of flat files. So we can create pandas dataframe and data staging based on each flat files name.
   - **excel_files_to_pandas()** is used to convert each flat files or excel files to dataframe using pandas and put it together into python dictionary.  
-  - **main()** is used to execute authentication, download and flat files extraction process into python dictionary. Then, load each dataframe in dictionary to data staging in BigQuery with table name = cleaned flat file name. In loading data process from dataframe to BigQuery, we implement slowly changing dimension type 1 or replace old tables with new tables.  
+  - **main()** is used to execute authentication, download and flat files extraction process into python dictionary. Then, load each dataframe in dictionary to data staging in BigQuery with table name = cleaned flat file name. Replace old tables with new tables if exist.  
 
 
 
@@ -71,15 +74,25 @@ Table of Content
   <img src="Images/orders_staging.png" style="border: 1px solid black" alt="Orders Staging" >
   </p>
 
-  Here is the **data staging physical design** : 
-  <p align="center">
-
-  <img src="Images/data_staging_design.png" style="border: 1px solid black" alt="Data Staging Design" >
-  </p>
-
-
-
   ### Data Transform and Load
+
+  **1. Create Empty Fact and Dimension Table Based on Data Warehouse Modeling**
+    Main Step: 
+      - Design a star schema data model for data warehouse using SQLDBM(https://app.sqldbm.com).
+      - Create sales_warehouse dataset in BigQuery.
+      - Create empty fact and dimension table with each schemas based designed data model. 
+    
+  The Result:  
+
+  <p align="center">
+      <img src="Images/data_warehouse_design.png" style="border: 1px solid black" alt="Data Staging Design" >
+  </p> 
+    
+
+  2. Data Staging to Data Warehouse Query (Inflow)
+  3. Data Warehouse to Aggregation Table Query (Upflow)
+  4. Backup Data Warehouse to Google Storage (Downflow)
+
   ### Data Visualization
 
 ## Further Improvements
