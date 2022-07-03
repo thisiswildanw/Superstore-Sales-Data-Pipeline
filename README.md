@@ -49,7 +49,7 @@ Table of Content
   <img src="Images/data_architecture.png" style="border: 1px solid black;width:600px;height:800px" alt="Data Source" >
 </p>
 
-  ### Data Extraction
+### Data Extraction
   
   We have build several python function in drive_gcs_intgr.py to extract data from Google Drive and load it into data staging in BigQuery.
 
@@ -60,8 +60,6 @@ Table of Content
   - **clean_name()** is used to get clean name of flat files. So we can create pandas dataframe and data staging based on each flat files name.
   - **excel_files_to_pandas()** is used to convert each flat files or excel files to dataframe using pandas and put it together into python dictionary.  
   - **main()** is used to execute authentication, download and flat files extraction process into python dictionary. Then, load each dataframe in dictionary to data staging in BigQuery with table name = cleaned flat file name. Replace old tables with new tables if exist.  
-
-
 
   Here is orders, categories and customers staging that we have created by executing **drive_gcs_intgr.py** : 
   <p align="center">
@@ -74,29 +72,163 @@ Table of Content
   <img src="Images/orders_staging.png" style="border: 1px solid black" alt="Orders Staging" >
   </p>
 
-  ### Data Transform and Load
+### Data Transform and Load
 
   **1. Create Empty Fact and Dimension Table Based on Data Warehouse Modeling**
    
-   Main Step: 
-   - Design a star schema data model for data warehouse using [sqldbm](https://app.sqldbm.com) 
-   - Create sales_warehouse dataset in BigQuery
-   - Create empty fact and dimension table with each schemas based designed data model
+   Main process: 
+   - Design a star schema data model for data warehouse using [sqldbm](https://app.sqldbm.com). 
+   - Create sales_warehouse dataset in BigQuery.
+   - Create empty fact and dimension table based designed data model.
     
-   The Result:  
+   Result:  
 
   <p align="center">
       <img src="Images/data_warehouse_design.png" style="border: 1px solid black" alt="Data Staging Design" >
-  </p> 
-    
+  </p>
+  <p align="center">
+      <img src="Images/dataset_warehouse.png" style="border: 1px solid black" alt="Data Staging Design" >
+  </p>
+  <br>
+   
 
-**2. Data Staging to Data Warehouse Query (Inflow)**
+**2. Data Staging to Data Warehouse Queries**
   This query contain several process:  
-  - 
-  - 
-**3. Data Warehouse to Aggregation Table Query (Upflow)**
+  - Inflow process from order_staging to sales_fact, ship_dim and city_dim
+  - Inflow process from categories_staging to product_dim using SCD Type-2
+  - Inflow process from customer_staging to customer_dim using SCD Type-2
+  
+  Here the query:
+  ``` sql
+  #Inflow sales_staging.categories to sales_warehouse.product_dim using SCD Type 2 
+  MERGE `wildan-portofolio.sales_warehouse.product_dim` p_dim
+  USING `wildan-portofolio.sales_staging.categories_staging` cs
+    ON p_dim.Product_ID = cs.Product_ID
+  WHEN NOT MATCHED THEN 
+    INSERT VALUES (
+      cs.Product_ID,
+      cs.Category,
+      cs.Sub_Category,
+      cs.Product_Name,
+      CURRENT_DATE(),
+      NULL,
+      TRUE
+    )
+  WHEN MATCHED AND (
+    p_dim.Category <> cs.Category
+    OR p_dim.Sub_Category <> cs.Sub_Category
+    OR p_dim.Product_Name <> cs.Product_Name
+  )
+  THEN UPDATE SET 
+    End_Date = CURRENT_DATE, Flag = False;
 
-  ### Data Visualization
+  #Inflow sales_staging.customers_staging to sales_warehouse.cutomers_dim using SCD Type 2
+  MERGE `wildan-portofolio.sales_warehouse.customer_dim` c_main
+  USING `wildan-portofolio.sales_staging.customers_staging` ts
+  ON c_main.Customer_ID = ts.Customer_ID
+  WHEN NOT MATCHED THEN 
+    INSERT VALUES (
+      ts.Customer_ID,
+      ts.Customer_Name,
+      ts.Segment,
+      CURRENT_DATE(),
+      NULL,
+      TRUE
+    )
+  WHEN MATCHED AND (
+    c_main.Customer_ID <> ts.Customer_ID
+    OR c_main.Customer_Name <> ts.Customer_Name
+    OR c_main.Segment <> ts.Segment
+  )
+  THEN UPDATE SET 
+    End_Date = CURRENT_DATE(), Flag = False;
+
+  #Inflow sales_staging.order_staging to sales_warehouse.sales_fact
+  MERGE `wildan-portofolio.sales_warehouse.sales_fact` s_main
+  USING `wildan-portofolio.sales_staging.orders_staging` os
+  ON 
+    s_main.Order_ID = os.Order_ID 
+    AND s_main.Order_Date = DATE(os.Order_Date)
+    AND s_main.Product_ID = os.Product_ID
+    AND s_main.Customer_ID = os.Customer_ID
+    AND s_main.City = os.City
+    AND s_main.Quantity = CAST(ROUND(os.Quantity) AS INT64)
+    AND s_main.Discount = os.Discount
+    AND s_main.Profit = os.Profit
+    AND s_main.Sales = os.Sales
+  WHEN NOT MATCHED THEN 
+    INSERT VALUES (
+      os.Order_ID,
+      DATE(os.Order_Date),
+      os.Product_ID,
+      os.Customer_ID,
+      os.City,
+      CAST(ROUND(os.Quantity) AS INT64),
+      os.Discount,
+      os.Profit,
+      os.Sales
+    );
+
+  #Inflow sales_staging.order_staging to sales_warehouse.ship_dim
+  MERGE `wildan-portofolio.sales_warehouse.ship_dim` sh_main
+  USING (
+    SELECT
+      Order_ID,
+      Ship_Date,
+      Ship_Mode 
+    FROM
+  `wildan-portofolio.sales_staging.orders_staging`
+    GROUP BY
+      Order_ID,
+      Ship_Date,
+      Ship_Mode) os
+  ON 
+    sh_main.Order_ID = os.Order_ID 
+    AND sh_main.Ship_Date = DATE(os.Ship_Date)
+    AND sh_main.Ship_Mode = os.Ship_Mode
+  WHEN NOT MATCHED THEN 
+    INSERT VALUES (
+      os.Order_ID,
+      DATE(os.Ship_Date),
+      os.Ship_Mode
+    );
+
+  #Inflow sales_staging.order_staging to sales_warehouse.city_dim
+  MERGE `wildan-portofolio.sales_warehouse.city_dim` sh_main
+  USING (
+    SELECT
+      City,
+      Postal_Code,
+      State,
+      Region,
+      Country 
+    FROM
+  `wildan-portofolio.sales_staging.orders_staging`
+    GROUP BY
+      Postal_Code,
+      City,
+      State,
+      Region,
+      Country) os
+  ON 
+      sh_main.City = os.City 
+      AND sh_main.Postal_Code = CAST(ROUND(os.Postal_Code) AS INT64)
+      AND sh_main.State = os.State
+      AND sh_main.Region = os.Region
+      AND sh_main.Country = os.Country 
+  WHEN NOT MATCHED THEN 
+    INSERT VALUES (
+      City,
+      CAST(ROUND(os.Postal_Code) AS INT64),
+      State,
+      Region,
+      Country
+    );
+
+  ```
+**3. Create Aggregation Table By Querying Data Warehouse  (Upflow)**
+
+### Data Visualization
 
 ## Further Improvements
 ## Special Thanks
