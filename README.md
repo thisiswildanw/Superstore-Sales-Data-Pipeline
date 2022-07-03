@@ -92,7 +92,8 @@ Table of Content
   <br>
    
 
-**2. Data Staging to Data Warehouse Queries**
+**2. Data Staging to Data Warehouse Query**
+  
   This query contain several process:  
   - Inflow process from order_staging to sales_fact, ship_dim and city_dim
   - Inflow process from categories_staging to product_dim using SCD Type-2
@@ -101,8 +102,18 @@ Table of Content
   Here the query:
   ``` sql
   #Inflow sales_staging.categories to sales_warehouse.product_dim using SCD Type 2 
+  ## There was no created_at product in categories staging,
+  ## So we have no choices, to use "GROUP BY" to remove duplicates Product_ID 
   MERGE `wildan-portofolio.sales_warehouse.product_dim` p_dim
-  USING `wildan-portofolio.sales_staging.categories_staging` cs
+  USING (
+    SELECT 
+      Product_ID,
+      Product_Name,
+      Category,
+      Sub_Category
+    FROM `wildan-portofolio.sales_staging.categories_staging`
+    GROUP BY 1,2,3,4
+    ) cs
     ON p_dim.Product_ID = cs.Product_ID
   WHEN NOT MATCHED THEN 
     INSERT VALUES (
@@ -225,8 +236,13 @@ Table of Content
       Country
     );
 
+
   ```
+<br>
+
 **3. Create Aggregation Table By Querying Data Warehouse  (Upflow)**
+
+
 
 ### Data Visualization
 
