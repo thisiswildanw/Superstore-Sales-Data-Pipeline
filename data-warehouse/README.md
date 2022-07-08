@@ -1,18 +1,16 @@
-### Data Warehouse
+# Data Warehouse
 
-  **1. Create Empty Fact and Dimension Table Based on Data Warehouse Modeling**
+  ## Design Data Model
    
-  Main process: 
-   - Design a star schema data model for data warehouse using [sqldbm](https://app.sqldbm.com). 
-   - Create sales_warehouse dataset in BigQuery.
-   - Create empty fact and dimension table based designed data model.
-    
+  We use [sqldbm](https://app.sqldbm.com) to design data model. 
   Star Schema Model:  
 
   <p align="center">
       <img src="images/data_warehouse_design.png" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
-     
+
+  ## Create empty table based on data model.
+
   <p align="center">
       <img src="images/dataset_warehouse.png" style="border: 1px solid black" alt="Data Staging Design" >
   </p>

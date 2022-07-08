@@ -14,9 +14,9 @@
 </p>
 <br>
 
-## Data Extraction
+## Data extraction using Python & Docker.
 
-### 1. Create Python Code to Extract and Load Google Drive Folder
+### Create Python Code to Extract and Load Google Drive Folder
 
   We have build several python function in drive_gcs_intgr.py to extract data from Google Drive and load it into data staging in BigQuery.
 
@@ -28,7 +28,7 @@
   - **excel_files_to_pandas()** is used to convert each flat files or excel files to dataframe using pandas and put it together into python dictionary.  
   - **main()** is used to execute authentication, download and flat files extraction process into python dictionary. Then, load each dataframe in dictionary to data staging in BigQuery with table name = cleaned flat file name. Replace old tables with new tables if exist.  
 
-### 2. Build Dockerfile to Standardized Python Environments
+### Build Dockerfile to Standardized Python Environments
 
 ``` docker
 FROM python:3.9
@@ -42,7 +42,7 @@ ENTRYPOINT [ "python", "drive_gcs_intgr.py" ]
 docker build -t test:extraction .
 ```
 
-## Automate Docker Run By First Day of The Month at 01.00 AM Using CronTab
+## Create Docker Run Schedule By First Day of The Month at 01.00 AM Using CronTab
 ``` crontab
 0 1 1 * * docker run test:extraction
 ```
@@ -64,7 +64,7 @@ service cron status
 
 
 Test Result: 
-  The cron job was scheduled at 8 July 10.00 am match with every table "created at" metadata in data staging. That means we have successfully extracted files from google drive to google BigQuery on July 8 10.00 am.
+  The cron job was scheduled at 8 July 10.00 am match with every table "created" metadata in data staging. That means we have successfully extracted files from google drive to google BigQuery on July 8 10.00 am.
   <br>
   <p align="center">
   <img src="images/categories_metadata.png" style="border: 1px solid black" alt="Categories Staging" >
