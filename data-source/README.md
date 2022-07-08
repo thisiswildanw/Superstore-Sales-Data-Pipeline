@@ -14,14 +14,21 @@
 </p>
 <br>
 
-## Create sales_staging in Google BigQuery.
-
+## Create sales_staging dataset in Google BigQuery.
+Tutorial : 
+<p align="center">
+  <img src="images/Create_Dataset_Part1.png" style="border: 1px solid black" alt="Data Source" >
+</p>
+<p align="center">
+  <img src="images/Create_Dataset_Part2.png" style="border: 1px solid black" alt="Data Source" >
+</p>
+<br>
 
 ## Data extraction using Python & Docker.
 
 ### Create Python Code to Extract and Load Google Drive Folder
 
-  We have build several python function in drive_gcs_intgr.py to extract data from Google Drive and load it into data staging in BigQuery.
+  We have build several python function in **drive_gcs_intgr.py** to extract data from Google Drive and load it into data staging in BigQuery.
 
   - **gdrive_auth()** is used to access google drive via pydrive library. Make sure place JSON credentials files in same folder before running this function. Here is the documentation and tutorials : 
       - Pydrive documentation : [link](https://pythonhosted.org/PyDrive/)

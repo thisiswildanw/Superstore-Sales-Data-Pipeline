@@ -9,7 +9,7 @@
   </p>
 
   ## Create empty table based on data model.
-  Tutorial : 
+  Tutorial (product_dim) : 
 
   <p align="center">
       <img src="images/Create_Table_Part1.png" style="border: 1px solid black" alt="Data Staging Design" >
@@ -52,19 +52,23 @@
   <br>
    
 
-  ## Create Inflow query to move and transform data from data staging to data warehouse.
+  ## [Create Inflow query to move and transform data from sales staging to sales warehouse](upflow-query)
   
-  This query contain several process:  
-  - Inflow process from order_staging to sales_fact, ship_dim and city_dim
-  - Inflow process from categories_staging to product_dim using SCD Type-2
-  - Inflow process from customer_staging to customer_dim using SCD Type-2
-  
-  
-The Query Result For Sales Fact 
-<p align="center">
-      <img src="images/not_empty_sales_fact.png" style="border: 1px solid black" alt="Data Staging Design" >
+  Create scheduled queries by first day of month at 01.05 am that contain several process:  
+  - Transform order_staging to sales_fact, ship_dim and city_dim
+  - Transform categories_staging to product_dim using SCD Type-2
+  - Transform customer_staging to customer_dim using SCD Type-2
+
+  Create scheduled query tutorial: 
+  <br> 
+  <p align="center">
+      <img src="images/inflow_scheduled_query1.png" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
-<br>
+  <p align="center">
+      <img src="images/inflow_scheduled_query2.png" style="border: 1px solid black" alt="Data Staging Design" >
+  </p>
+
+  Click here to [More Details](inflow-query) 
 
 ## Create Upflow query for sales performance dashboard.
 
