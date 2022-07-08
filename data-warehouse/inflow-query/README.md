@@ -1,6 +1,6 @@
 # Create Inflow query to move and transform data from data staging to data warehouse.
 
-## Transform & load order_staging to sales_fact, ship_dim and city_dim
+## Transform & load order_staging to sales_fact, ship_dim and city_dim using SQL Query
 
 ``` sql
 #Inflow sales_staging.order_staging to sales_warehouse.sales_fact
@@ -92,9 +92,15 @@ WHEN NOT MATCHED THEN
 
 Result : 
 
-## Transform & load categories_staging to product_dim using SCD Type-2
+## Transform & load categories_staging to product_dim using SCD Type-2 using SQL Query
 Query : 
 Result : 
-## Transform & load customer_staging to customer_dim using SCD Type-2
+## Transform & load customer_staging to customer_dim using SCD Type-2 using SQL Query
 Query : 
 Result : 
+
+## Set query schedule by first month at 01.30 am  
+  <br> 
+  <p align="center">
+      <img src="images/inflow_scheduled_query2.png" style="border: 1px solid black" alt="Data Staging Design" >
+  </p>

@@ -59,15 +59,6 @@
   - Transform categories_staging to product_dim using SCD Type-2
   - Transform customer_staging to customer_dim using SCD Type-2
 
-  Create scheduled query tutorial: 
-  <br> 
-  <p align="center">
-      <img src="images/inflow_scheduled_query1.png" style="border: 1px solid black" alt="Data Staging Design" >
-  </p>
-  <p align="center">
-      <img src="images/inflow_scheduled_query2.png" style="border: 1px solid black" alt="Data Staging Design" >
-  </p>
-
   Click here to [More Details](inflow-query) 
 
 ## Create Upflow query for sales performance dashboard.
