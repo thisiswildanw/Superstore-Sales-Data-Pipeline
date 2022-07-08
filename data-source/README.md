@@ -14,6 +14,9 @@
 </p>
 <br>
 
+## Create sales_staging in Google BigQuery.
+
+
 ## Data extraction using Python & Docker.
 
 ### Create Python Code to Extract and Load Google Drive Folder

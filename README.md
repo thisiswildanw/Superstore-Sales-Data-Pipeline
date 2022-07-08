@@ -36,9 +36,10 @@ This project contains the process of retrieving, cleaning, and standardizing dat
 
 ### [Data Source](data-source)
   - Google Drive Shared folder.
+  - Create sales_staging dataset in Google BigQuery.
   - Data extraction using Python & Docker.
-  - Create Docker Run schedule Using CronTab.
-  - Test Cron Job.
+  - Create Docker Run Schedule By First Day of The Month at 01.00 AM Using CronTab
+  - Cron Job Test.
   - Data Extraction Result.
 
 [More Details](data-source)

@@ -2,27 +2,57 @@
 
   ## Design Data Model
    
-  We use [sqldbm](https://app.sqldbm.com) to design data model. 
-  Star Schema Model:  
+  We use [sqldbm](https://app.sqldbm.com) to design star-schema data model. 
 
   <p align="center">
       <img src="images/data_warehouse_design.png" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
 
   ## Create empty table based on data model.
+  Tutorial : 
 
   <p align="center">
-      <img src="images/dataset_warehouse.png" style="border: 1px solid black" alt="Data Staging Design" >
+      <img src="images/Create_Table_Part1.png" style="border: 1px solid black" alt="Data Staging Design" >
+  </p>
+  <p align="center">
+      <img src="images/Create_Table_Part2.png" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
 
-  Empty Sales Fact For Example:
+  <br>
+
+
+  Empty Sales Fact Table :
   <p align="center">
       <img src="images/empty_sales_fact.png" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
   <br>
+
+  Empty Product Dimension Table:
+  <p align="center">
+      <img src="images/empty_product_dim.png" style="border: 1px solid black" alt="Data Staging Design" >
+  </p>
+  <br>
+
+  Empty Customer Dimension Table :
+  <p align="center">
+      <img src="images/empty_customer_dim.png" style="border: 1px solid black" alt="Data Staging Design" >
+  </p>
+  <br>
+  
+  Empty Ship Dim Table :
+  <p align="center">
+      <img src="images/empty_ship_dim.png" style="border: 1px solid black" alt="Data Staging Design" >
+  </p>
+  <br>
+
+  Empty City Dim Table :
+  <p align="center">
+      <img src="images/empty_city_dim.png" style="border: 1px solid black" alt="Data Staging Design" >
+  </p>
+  <br>
    
 
-**2. Create Data Staging to Data Warehouse Data Flow Query**
+  ## Create Inflow query to move and transform data from data staging to data warehouse.
   
   This query contain several process:  
   - Inflow process from order_staging to sales_fact, ship_dim and city_dim
@@ -36,7 +66,9 @@ The Query Result For Sales Fact
   </p>
 <br>
 
-**3. Create Aggregation Table For Dashboard By Querying Data Warehouse**
+## Create Upflow query for sales performance dashboard.
+
+## Create Upflow query for RFM dashboard.
 
 
-**4. Automated Each Query Execution By First Day of The Month at 02.00 AM**
+## Create Downflow query to backup data warehouse to Google Storage.
