@@ -92,3 +92,5 @@ Test Result:
   <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/orders_staging.png?raw=true"style="border: 1px solid black" alt="Orders Staging" >
   </p>
 <br>
+
+#### [<< Back to Project Architecture](https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/#project-architecture)

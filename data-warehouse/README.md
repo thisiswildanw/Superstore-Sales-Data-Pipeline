@@ -5,17 +5,18 @@
   We use [sqldbm](https://app.sqldbm.com) to design star-schema data model. 
 
   <p align="center">
-      <img src="images/data_warehouse_design.png" style="border: 1px solid black" alt="Data Staging Design" >
+  
+      <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/data_warehouse_design.png?raw=true" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
 
   ## Create empty table based on data model.
   Tutorial (product_dim) : 
 
   <p align="center">
-      <img src="images/Create_Table_Part1.png" style="border: 1px solid black" alt="Data Staging Design" >
+      <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/Create_Table_Part1.png?raw=true" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
   <p align="center">
-      <img src="images/Create_Table_Part2.png" style="border: 1px solid black" alt="Data Staging Design" >
+      <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/Create_Table_Part2.png?raw=true" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
 
   <br>
@@ -23,31 +24,31 @@
 
   Empty Sales Fact Table :
   <p align="center">
-      <img src="images/empty_sales_fact.png" style="border: 1px solid black" alt="Data Staging Design" >
+      <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/empty_sales_fact.png?raw=true.png" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
   <br>
 
   Empty Product Dimension Table:
   <p align="center">
-      <img src="images/empty_product_dim.png" style="border: 1px solid black" alt="Data Staging Design" >
+      <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/empty_product_dim.png?raw=true" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
   <br>
 
   Empty Customer Dimension Table :
   <p align="center">
-      <img src="images/empty_customer_dim.png" style="border: 1px solid black" alt="Data Staging Design" >
+      <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/empty_customer_dim.png?raw=true"" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
   <br>
   
   Empty Ship Dim Table :
   <p align="center">
-      <img src="images/empty_ship_dim.png" style="border: 1px solid black" alt="Data Staging Design" >
+      <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/empty_ship_dim.png?raw=true"" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
   <br>
 
   Empty City Dim Table :
   <p align="center">
-      <img src="images/empty_city_dim.png" style="border: 1px solid black" alt="Data Staging Design" >
+      <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/empty_city_dim.png?raw=true"" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
   <br>
    
@@ -67,3 +68,4 @@
 
 ## Create Upflow query for RFM dashboard.
 
+#### [<< Back to Project Architecture](https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/#project-architecture)

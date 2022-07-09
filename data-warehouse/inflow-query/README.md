@@ -93,13 +93,13 @@ WHEN NOT MATCHED THEN
 **Result :** 
 
   <p align="center">
-      <img src="images/sales_fact_table.png" style="border: 1px solid black" alt="Data Staging Design" >
+      <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/sales_fact_table.png?raw=true" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
   <p align="center">
-      <img src="images/city_dim_table.png" style="border: 1px solid black" alt="Data Staging Design" >
+      <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/city_dim_table.png?raw=true".png" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
   <p align="center">
-      <img src="images/ship_dim_table.png" style="border: 1px solid black" alt="Data Staging Design" >
+      <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/ship_dim_table.png?raw=true" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
 
 ## Transform & load categories_staging to product_dim using SQL Query
@@ -137,7 +137,7 @@ THEN UPDATE SET
 
 **Result :**
 <p align="center">
-      <img src="images/product_dim_table.png" style="border: 1px solid black" alt="Data Staging Design" >
+      <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/product_dim_table.png?raw=true" style="border: 1px solid black" alt="Data Staging Design" >
 </p>
 
 
@@ -167,11 +167,13 @@ THEN UPDATE SET
 
 **Result :**
 <p align="center">
-      <img src="images/customer_dim_table.png" style="border: 1px solid black" alt="Data Staging Design" >
+      <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/customer_dim_table.png?raw=true" style="border: 1px solid black" alt="Data Staging Design" >
 </p>
 
 ## Set query schedule by first month at 01.30 am  
   <br> 
   <p align="center">
-      <img src="images/inflow_scheduled_query2.png" style="border: 1px solid black" alt="Data Staging Design" >
+      <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/inflow_scheduled_query2.png?raw=true"" style="border: 1px solid black" alt="Data Staging Design" >
   </p>
+
+  #### [<< Back to Data Warehouse](https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/tree/main/data-warehouse)
