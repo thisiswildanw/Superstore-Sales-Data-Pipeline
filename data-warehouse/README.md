@@ -61,9 +61,10 @@
 
   Click here to [More Details](inflow-query) 
 
+## Create Downflow query to backup sales warehouse to Google Storage.
+
 ## Create Upflow query for sales performance dashboard.
 
 ## Create Upflow query for RFM dashboard.
 
 
-## Create Downflow query to backup data warehouse to Google Storage.

@@ -90,14 +90,85 @@ WHEN NOT MATCHED THEN
   );
 ```
 
-Result : 
+**Result :** 
 
-## Transform & load categories_staging to product_dim using SCD Type-2 using SQL Query
-Query : 
-Result : 
-## Transform & load customer_staging to customer_dim using SCD Type-2 using SQL Query
-Query : 
-Result : 
+  <p align="center">
+      <img src="images/sales_fact_table.png" style="border: 1px solid black" alt="Data Staging Design" >
+  </p>
+  <p align="center">
+      <img src="images/city_dim_table.png" style="border: 1px solid black" alt="Data Staging Design" >
+  </p>
+  <p align="center">
+      <img src="images/ship_dim_table.png" style="border: 1px solid black" alt="Data Staging Design" >
+  </p>
+
+## Transform & load categories_staging to product_dim using SQL Query
+
+``` sql 
+MERGE `wildan-portofolio.sales_warehouse.product_dim` p_dim
+USING (
+  SELECT 
+    Product_ID,
+    Product_Name,
+    Category,
+    Sub_Category
+  FROM `wildan-portofolio.sales_staging.categories_staging`
+  GROUP BY 1,2,3,4
+  ) cs
+  ON p_dim.Product_ID = cs.Product_ID
+WHEN NOT MATCHED THEN 
+  INSERT VALUES (
+    cs.Product_ID,
+    cs.Category,
+    cs.Sub_Category,
+    cs.Product_Name,
+    CURRENT_DATE(),
+    NULL,
+    TRUE
+  )
+WHEN MATCHED AND (
+  p_dim.Category <> cs.Category
+  OR p_dim.Sub_Category <> cs.Sub_Category
+  OR p_dim.Product_Name <> cs.Product_Name
+)
+THEN UPDATE SET 
+  End_Date = CURRENT_DATE, Flag = False; 
+```
+
+**Result :**
+<p align="center">
+      <img src="images/product_dim_table.png" style="border: 1px solid black" alt="Data Staging Design" >
+</p>
+
+
+## Transform & load customer_staging to customer_dim using SQL Query
+
+``` sql
+MERGE `wildan-portofolio.sales_warehouse.customer_dim` c_main
+USING `wildan-portofolio.sales_staging.customers_staging` ts
+ON c_main.Customer_ID = ts.Customer_ID
+WHEN NOT MATCHED THEN 
+  INSERT VALUES (
+    ts.Customer_ID,
+    ts.Customer_Name,
+    ts.Segment,
+    CURRENT_DATE(),
+    NULL,
+    TRUE
+  )
+WHEN MATCHED AND (
+  c_main.Customer_ID <> ts.Customer_ID
+  OR c_main.Customer_Name <> ts.Customer_Name
+  OR c_main.Segment <> ts.Segment
+)
+THEN UPDATE SET 
+  End_Date = CURRENT_DATE(), Flag = False; 
+```
+
+**Result :**
+<p align="center">
+      <img src="images/customer_dim_table.png" style="border: 1px solid black" alt="Data Staging Design" >
+</p>
 
 ## Set query schedule by first month at 01.30 am  
   <br> 
