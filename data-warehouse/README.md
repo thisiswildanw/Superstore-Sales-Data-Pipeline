@@ -67,4 +67,3 @@
 
 ## Create Upflow query for RFM dashboard.
 
-

@@ -10,7 +10,7 @@
 
 <br>
 <p align="center">
-  <img src="images/data_source.png" style="border: 1px solid black" alt="Data Source" >
+  <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/tree/main/images/data_source.png" style="border: 1px solid black" alt="Data Source" >
 </p>
 <br>
 
