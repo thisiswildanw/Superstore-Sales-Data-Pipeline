@@ -10,17 +10,17 @@
 
 <br>
 <p align="center">
-  <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/tree/main/images/data_source.png" style="border: 1px solid black" alt="Data Source" >
+  <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/data_source.png?raw=true" style="border: 1px solid black" alt="Data Source" >
 </p>
 <br>
 
 ## Create sales_staging dataset in Google BigQuery.
 Tutorial : 
 <p align="center">
-  <img src="images/Create_Dataset_Part1.png" style="border: 1px solid black" alt="Data Source" >
+  <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/Create_Dataset_Part1.png?raw=true">
 </p>
 <p align="center">
-  <img src="images/Create_Dataset_Part2.png" style="border: 1px solid black" alt="Data Source" >
+  <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/Create_Dataset_Part2.png?raw=true style="border: 1px solid black" alt="Data Source" >
 </p>
 <br>
 
@@ -69,7 +69,8 @@ Check cron status.
 service cron status
 ```
 <p align="center">
-  <img src="images/cron_status.png" style="border: 1px solid black" alt="Orders Staging" >
+
+  <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/cron_status.png?raw=true" style="border: 1px solid black" alt="Orders Staging" >
 </p>
 
 
@@ -77,17 +78,17 @@ Test Result:
   The cron job was scheduled at 8 July 10.00 am match with every table "created" metadata in data staging. That means we have successfully extracted files from google drive to google BigQuery on July 8 10.00 am.
   <br>
   <p align="center">
-  <img src="images/categories_metadata.png" style="border: 1px solid black" alt="Categories Staging" >
+  <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/categories_metadata.png?raw=true" style="border: 1px solid black" alt="Categories Staging" >
   </p>
 
 ## Data Extraction Result
   <p align="center">
-  <img src="images/categories_staging.png" style="border: 1px solid black" alt="Categories Staging" >
+  <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/categories_staging.png?raw=true" style="border: 1px solid black" alt="Categories Staging" >
   </p>
   <p align="center">
-  <img src="images/customers_staging.png" style="border: 1px solid black" alt="Customers Staging" >
+  <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/customers_staging.png?raw=true" style="border: 1px solid black" alt="Customers Staging" >
   </p>
   <p align="center">
-  <img src="images/orders_staging.png" style="border: 1px solid black" alt="Orders Staging" >
+  <img src="https://github.com/thisiswildanw/Superstore-Sales-Data-Pipeline/blob/main/images/orders_staging.png?raw=true"style="border: 1px solid black" alt="Orders Staging" >
   </p>
 <br>
